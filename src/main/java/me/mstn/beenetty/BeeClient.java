@@ -22,7 +22,7 @@ public final class BeeClient {
         this.serverPort = serverPort;
     }
 
-    public BeeClient connect(Runnable serverReady, Runnable connectionFailed, Consumer<SocketChannel> clientInit) {
+    public BeeClient connect(Runnable clientReady, Runnable connectionFailed, Consumer<SocketChannel> clientInit) {
         Thread clientThread = new Thread(() -> {
             try {
                 channelFuture = new Bootstrap()
@@ -45,7 +45,7 @@ public final class BeeClient {
                 });
 
                 channelFuture.syncUninterruptibly();
-                serverReady.run();
+                clientReady.run();
                 channelFuture.channel().closeFuture().syncUninterruptibly();
             } finally {
                 workerGroup.shutdownGracefully();
