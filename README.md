@@ -3,16 +3,16 @@
 ```xml
 <repositories>
     <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
+        <id>Masston Repo</id>
+        <url>https://repo.mstn.me</url>
     </repository>
 </repositories>
 ```
 ```xml
 <dependency>
-    <groupId>com.github.MVSSTON</groupId>
+    <groupId>me.mstn</groupId>
     <artifactId>BeeNetty</artifactId>
-    <version>v1.0</version>
+    <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -22,12 +22,12 @@
 allprojects {
     repositories {
         ...
-        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo.mstn.me' }
     }
 }
 ```
 ```groovy
 dependencies {
-        implementation 'com.github.MVSSTON:BeeNetty:v1.0'
+        implementation 'me.mstn:BeeNetty:1.0-SNAPSHOT'
 }
 ```
