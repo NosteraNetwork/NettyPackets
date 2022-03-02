@@ -1,4 +1,4 @@
-package me.mstn.beenetty.protocol;
+package me.mstn.app.protocol;
 
 public class ProtocolException extends Exception {
 

@@ -3,13 +3,13 @@ package me.mstn.example.client;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.AllArgsConstructor;
-import me.mstn.beenetty.protocol.BeePacket;
+import me.mstn.app.protocol.EnotixPacket;
 import me.mstn.example.common.HelloWorldPacket;
 
 import java.net.InetSocketAddress;
 
 @AllArgsConstructor
-public class ClientPacketHandler extends SimpleChannelInboundHandler<BeePacket> {
+public class ClientPacketHandler extends SimpleChannelInboundHandler<EnotixPacket> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
@@ -33,7 +33,7 @@ public class ClientPacketHandler extends SimpleChannelInboundHandler<BeePacket> 
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, BeePacket packet) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, EnotixPacket packet) throws Exception {
         //Logic: Server send packet to Client, handle.
 
         if (packet instanceof HelloWorldPacket) {

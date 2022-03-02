@@ -1,16 +1,16 @@
 package me.mstn.example.client;
 
-import me.mstn.beenetty.BeeClient;
-import me.mstn.beenetty.protocol.PacketManager;
-import me.mstn.beenetty.protocol.handler.BeePacketDecoder;
-import me.mstn.beenetty.protocol.handler.BeePacketEncoder;
-import me.mstn.beenetty.protocol.handler.NettyPacketLengthDeserializer;
-import me.mstn.beenetty.protocol.handler.NettyPacketLengthSerializer;
+import me.mstn.app.NettyClient;
+import me.mstn.app.protocol.PacketManager;
+import me.mstn.app.protocol.handler.PacketDecoder;
+import me.mstn.app.protocol.handler.PacketEncoder;
+import me.mstn.app.protocol.handler.NettyPacketLengthDeserializer;
+import me.mstn.app.protocol.handler.NettyPacketLengthSerializer;
 import me.mstn.example.common.HelloWorldPacket;
 
 public class ExampleClient {
 
-    private BeeClient beeClient;
+    private NettyClient nettyClient;
 
     public static void main(String[] args) {
         new ExampleClient().connect();
@@ -19,7 +19,7 @@ public class ExampleClient {
     public void connect() {
         PacketManager.registerPacket(1001, HelloWorldPacket.class);
 
-        this.beeClient = new BeeClient(1337).connect(
+        this.nettyClient = new NettyClient(1337).connect(
                 () -> {
                     System.out.println("Connected to Server successfully!");
                 },
@@ -29,15 +29,15 @@ public class ExampleClient {
                 (channel) -> {
                     channel.pipeline()
                             .addLast(new NettyPacketLengthDeserializer())
-                            .addLast(new BeePacketDecoder())
+                            .addLast(new PacketDecoder())
                             .addLast(new NettyPacketLengthSerializer())
-                            .addLast(new BeePacketEncoder())
+                            .addLast(new PacketEncoder())
                             .addLast(new ClientPacketHandler());
                 }
         );
     }
     public void shutdownApplication() {
-        beeClient.disconnect(() -> {
+        nettyClient.disconnect(() -> {
             System.out.println("Client disconnected");
         });
     }

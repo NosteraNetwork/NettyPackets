@@ -1,4 +1,4 @@
-package me.mstn.beenetty;
+package me.mstn.app;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -6,11 +6,11 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import me.mstn.beenetty.util.NettyUtil;
+import me.mstn.app.util.NettyUtil;
 
 import java.util.function.Consumer;
 
-public final class BeeClient {
+public final class NettyClient {
 
     private final int serverPort;
 
@@ -18,11 +18,11 @@ public final class BeeClient {
 
     private ChannelFuture channelFuture;
 
-    public BeeClient(int serverPort) {
+    public NettyClient(int serverPort) {
         this.serverPort = serverPort;
     }
 
-    public BeeClient connect(Runnable clientReady, Runnable connectionFailed, Consumer<SocketChannel> clientInit) {
+    public NettyClient connect(Runnable clientReady, Runnable connectionFailed, Consumer<SocketChannel> clientInit) {
         Thread clientThread = new Thread(() -> {
             try {
                 channelFuture = new Bootstrap()

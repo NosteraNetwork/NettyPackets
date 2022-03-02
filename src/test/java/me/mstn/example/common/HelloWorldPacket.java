@@ -4,13 +4,13 @@ import io.netty.buffer.ByteBuf;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.mstn.beenetty.protocol.BeePacket;
+import me.mstn.app.protocol.EnotixPacket;
 
 import java.io.IOException;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class HelloWorldPacket extends BeePacket {
+public class HelloWorldPacket extends EnotixPacket {
 
     @Getter
     private String message;

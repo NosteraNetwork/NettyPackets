@@ -1,4 +1,4 @@
-package me.mstn.beenetty.util;
+package me.mstn.app.util;
 
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.ServerChannel;

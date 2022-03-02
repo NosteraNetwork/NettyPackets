@@ -1,18 +1,18 @@
-package me.mstn.beenetty.protocol.handler;
+package me.mstn.app.protocol.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
-import me.mstn.beenetty.protocol.BeePacket;
-import me.mstn.beenetty.protocol.PacketManager;
-import me.mstn.beenetty.protocol.ProtocolException;
+import me.mstn.app.protocol.EnotixPacket;
+import me.mstn.app.protocol.PacketManager;
+import me.mstn.app.protocol.ProtocolException;
 
 import java.io.IOException;
 
-public final class BeePacketEncoder extends MessageToByteEncoder<BeePacket> {
+public final class PacketEncoder extends MessageToByteEncoder<EnotixPacket> {
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, BeePacket packet, ByteBuf byteBuf) throws IOException, ProtocolException {
+    protected void encode(ChannelHandlerContext ctx, EnotixPacket packet, ByteBuf byteBuf) throws IOException, ProtocolException {
         int id = PacketManager.getPacketId(packet.getClass());
 
         if (id == -1) {

@@ -1,10 +1,10 @@
-package me.mstn.beenetty.protocol;
+package me.mstn.app.protocol;
 
 import io.netty.buffer.ByteBuf;
 
 import java.io.IOException;
 
-public abstract class BeePacket {
+public abstract class EnotixPacket {
 
     public void write(ByteBuf byteBuf) throws IOException {
 

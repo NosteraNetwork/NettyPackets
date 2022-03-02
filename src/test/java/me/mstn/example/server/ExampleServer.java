@@ -1,16 +1,16 @@
 package me.mstn.example.server;
 
-import me.mstn.beenetty.BeeServer;
-import me.mstn.beenetty.protocol.PacketManager;
-import me.mstn.beenetty.protocol.handler.BeePacketDecoder;
-import me.mstn.beenetty.protocol.handler.BeePacketEncoder;
-import me.mstn.beenetty.protocol.handler.NettyPacketLengthDeserializer;
-import me.mstn.beenetty.protocol.handler.NettyPacketLengthSerializer;
+import me.mstn.app.NettyServer;
+import me.mstn.app.protocol.PacketManager;
+import me.mstn.app.protocol.handler.PacketDecoder;
+import me.mstn.app.protocol.handler.PacketEncoder;
+import me.mstn.app.protocol.handler.NettyPacketLengthDeserializer;
+import me.mstn.app.protocol.handler.NettyPacketLengthSerializer;
 import me.mstn.example.common.HelloWorldPacket;
 
 public class ExampleServer {
 
-    private BeeServer beeServer;
+    private NettyServer nettyServer;
 
     public static void main(String[] args) {
         new ExampleServer().start();
@@ -19,16 +19,16 @@ public class ExampleServer {
     public void start() {
         PacketManager.registerPacket(1001, HelloWorldPacket.class);
 
-        this.beeServer = new BeeServer(1337).bind(
+        this.nettyServer = new NettyServer(1337).bind(
                 () -> {
                     System.out.println("Sever started on 1337 port");
                 },
                 (channel) -> {
                     channel.pipeline()
                             .addLast(new NettyPacketLengthDeserializer())
-                            .addLast(new BeePacketDecoder())
+                            .addLast(new PacketDecoder())
                             .addLast(new NettyPacketLengthSerializer())
-                            .addLast(new BeePacketEncoder())
+                            .addLast(new PacketEncoder())
                             .addLast(new ServerPacketHandler());
 
                     //For example, send packet after client connection:
@@ -37,7 +37,7 @@ public class ExampleServer {
         );
     }
     public void shutdownApplication() {
-        beeServer.shutdown(() -> {
+        nettyServer.shutdown(() -> {
             System.out.println("Server closed");
         });
     }
