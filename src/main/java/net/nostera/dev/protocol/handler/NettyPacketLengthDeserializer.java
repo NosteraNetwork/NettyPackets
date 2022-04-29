@@ -1,4 +1,4 @@
-package me.mstn.app.protocol.handler;
+package net.nostera.dev.protocol.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

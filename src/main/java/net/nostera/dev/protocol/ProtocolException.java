@@ -1,4 +1,4 @@
-package me.mstn.app.protocol;
+package net.nostera.dev.protocol;
 
 public class ProtocolException extends Exception {
 

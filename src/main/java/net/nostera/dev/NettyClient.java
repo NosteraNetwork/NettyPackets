@@ -1,4 +1,4 @@
-package me.mstn.app;
+package net.nostera.dev;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -6,7 +6,7 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import me.mstn.app.util.NettyUtil;
+import net.nostera.dev.util.NettyUtil;
 
 import java.util.function.Consumer;
 

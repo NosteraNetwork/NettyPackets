@@ -1,4 +1,4 @@
-package me.mstn.app.util;
+package net.nostera.dev.util;
 
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.ServerChannel;

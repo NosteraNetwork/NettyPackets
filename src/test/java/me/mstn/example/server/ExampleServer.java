@@ -1,11 +1,11 @@
 package me.mstn.example.server;
 
-import me.mstn.app.NettyServer;
-import me.mstn.app.protocol.PacketManager;
-import me.mstn.app.protocol.handler.PacketDecoder;
-import me.mstn.app.protocol.handler.PacketEncoder;
-import me.mstn.app.protocol.handler.NettyPacketLengthDeserializer;
-import me.mstn.app.protocol.handler.NettyPacketLengthSerializer;
+import net.nostera.dev.NettyServer;
+import net.nostera.dev.protocol.PacketManager;
+import net.nostera.dev.protocol.handler.PacketDecoder;
+import net.nostera.dev.protocol.handler.PacketEncoder;
+import net.nostera.dev.protocol.handler.NettyPacketLengthDeserializer;
+import net.nostera.dev.protocol.handler.NettyPacketLengthSerializer;
 import me.mstn.example.common.HelloWorldPacket;
 
 public class ExampleServer {

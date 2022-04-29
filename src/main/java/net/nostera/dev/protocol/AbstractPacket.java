@@ -1,10 +1,10 @@
-package me.mstn.app.protocol;
+package net.nostera.dev.protocol;
 
 import io.netty.buffer.ByteBuf;
 
 import java.io.IOException;
 
-public abstract class EnotixPacket {
+public abstract class AbstractPacket {
 
     public void write(ByteBuf byteBuf) throws IOException {
 
